@@ -7,6 +7,15 @@ import FAQ from '../components/FAQ.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { siteConfig } from '../../site.config';
 import { getAllCities, getCityBySlug, getNearbyCities } from '../lib/cities';
+import localContentRaw from '../data/local-content.json';
+
+const localContent = localContentRaw as Record<string, {
+  intro: string;
+  local_tip: string;
+  history_anecdote: string;
+  faq_local: { question: string; answer: string };
+  market_data: string;
+}>;
 
 export function getStaticPaths() {
   const allCities = getAllCities();
@@ -18,6 +27,7 @@ export function getStaticPaths() {
 
 const { city } = Astro.props;
 const nearbyCities = getNearbyCities(city, 8);
+const lc = localContent[city.slug];
 
 // SEO
 const title = siteConfig.niche.seoTitleTemplate
@@ -27,11 +37,15 @@ const description = siteConfig.niche.metaDescTemplate
   .replace('{city}', city.name)
   .replace('{zip}', city.zip);
 
-// Deterministic content variation based on city slug
+// Deterministic seed for content variations
 const seed = city.slug.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-const priceMod = ((seed % 20) - 10) / 100; // -10% to +10% price variation
 
 // Schema.org
+const faqItems = [
+  ...siteConfig.faq.slice(0, 4),
+  ...(lc ? [{ q: lc.faq_local.question, a: lc.faq_local.answer }] : []),
+];
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -61,7 +75,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": siteConfig.faq.slice(0, 4).map(f => ({
+    "mainEntity": faqItems.map(f => ({
       "@type": "Question",
       "name": f.q.replace('{city}', city.name),
       "acceptedAnswer": { "@type": "Answer", "text": f.a.replace('{city}', city.name) }
@@ -69,14 +83,16 @@ const jsonLd = [
   }
 ];
 
-// Intro variations
-const intros = [
+// Generic intro fallbacks (used when no local content exists)
+const genericIntros = [
   `Vous recherchez un installateur de **${siteConfig.niche.nameShort}** à **${city.name}** (${city.zip}) ? Comparez gratuitement jusqu'à 3 devis d'artisans certifiés RGE dans le département ${city.deptName} (${city.deptCode}). Notre service est 100% gratuit et sans engagement.`,
-  `L'installation d'une **${siteConfig.niche.nameShort}** à **${city.name}** permet de diviser votre facture de chauffage par 3 à 4. En ${city.region}, les conditions climatiques sont idéales pour ce type d'équipement. Recevez 3 devis gratuits d'installateurs qualifiés RGE.`,
+  `L'installation d'une **${siteConfig.niche.nameShort}** à **${city.name}** permet de diviser votre facture de chauffage par 3 à 4. En ${city.region}, les conditions climatiques sont idéales pour ce type d'équipement. Recevez 3 devis gratuits d'installateurs qualifiés RGE du ${city.deptName}.`,
   `À **${city.name}** (${city.deptName}), de plus en plus de propriétaires font le choix de la **${siteConfig.niche.nameShort}** pour remplacer leur chaudière fioul ou gaz. Avec les aides MaPrimeRénov' 2026, le reste à charge peut descendre sous les 5 000€. Estimez votre projet gratuitement.`,
 ];
-const introIdx = seed % intros.length;
 
+const introText = lc?.intro || genericIntros[seed % genericIntros.length];
+
+// Benefits with deterministic shuffle
 const benefits = [
   `Jusqu'à **70% d'économies** sur votre facture de chauffage à ${city.name}`,
   `Artisans **certifiés RGE** dans le ${city.deptName} (${city.deptCode})`,
@@ -86,11 +102,22 @@ const benefits = [
   `Durée de vie moyenne de **15 à 20 ans** avec entretien annuel`,
 ];
 
-// Shuffle benefits deterministically
 const shuffledBenefits = [...benefits].sort((a, b) => {
   const ha = a.charCodeAt(seed % a.length);
   const hb = b.charCodeAt(seed % b.length);
   return ha - hb;
+});
+
+// Zone climatique
+const zoneClimatique = ['H1a', 'H1b', 'H1c', 'H2a', 'H2b', 'H2c', 'H2d', 'H3'];
+const zoneIdx = seed % zoneClimatique.length;
+const zone = city.region.includes('Hauts-de-France') || city.region.includes('Grand Est') ? 'H1' :
+             city.region.includes('PACA') || city.region.includes('Corse') ? 'H3' :
+             city.region.includes('Île-de-France') || city.region.includes('Bourgogne') ? 'H1' : 'H2';
+
+// Content sections order (deterministic shuffle)
+const sectionOrder = [0, 1, 2, 3, 4].sort((a, b) => {
+  return ((a * seed) % 7) - ((b * seed) % 7);
 });
 ---
 
@@ -110,18 +137,16 @@ const shuffledBenefits = [...benefits].sort((a, b) => {
       ]} />
 
       <div class="grid lg:grid-cols-5 gap-10 items-start mt-6">
-        <!-- Content: 3 cols -->
         <div class="lg:col-span-3">
           <h1 class="text-2xl md:text-4xl font-extrabold leading-tight mb-6">
             {siteConfig.niche.name} à {city.name} ({city.zip})<br/>
             <span class="text-brand-200 text-xl md:text-2xl font-bold">Prix & Devis Gratuit 2026</span>
           </h1>
 
-          <div class="prose prose-invert max-w-none mb-8">
-            <p class="text-gray-300 leading-relaxed" set:html={intros[introIdx].replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')} />
+          <div class="mb-8">
+            <p class="text-gray-300 leading-relaxed" set:html={introText.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')} />
           </div>
 
-          <!-- Benefits -->
           <div class="grid sm:grid-cols-2 gap-3 mb-8">
             {shuffledBenefits.map((b) => (
               <div class="flex items-start gap-2 bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10">
@@ -136,7 +161,6 @@ const shuffledBenefits = [...benefits].sort((a, b) => {
           </a>
         </div>
 
-        <!-- Widget: 2 cols -->
         <div class="lg:col-span-2">
           <div class="sticky top-20">
             <QuoteWidget keyword={`${siteConfig.niche.name} ${city.name}`} />
@@ -146,83 +170,243 @@ const shuffledBenefits = [...benefits].sort((a, b) => {
     </div>
   </section>
 
-  <!-- Price Table -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <p class="text-sm text-gray-500 mb-4">
-      💡 Les prix ci-dessous sont des moyennes nationales. À {city.name} ({city.region}),
-      les tarifs peuvent varier de ±10% selon l'accessibilité du chantier et la complexité de l'installation.
-    </p>
-    <PriceTable />
-  </section>
+  <!-- Main Content Area -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
 
-  <!-- Process -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <ProcessSteps />
-  </section>
+    {/* Section: Local Expert Content */}
+    {lc && (
+      <section class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          🏠 Installer une {siteConfig.niche.nameShort} à {city.name} ({city.deptCode})
+        </h2>
+        <div class="prose max-w-none text-gray-600 space-y-4">
+          <p>{lc.intro}</p>
 
-  <!-- Rédactionnel local -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">
-        🏠 Installer une {siteConfig.niche.nameShort} à {city.name}
-      </h2>
-      <div class="prose max-w-none text-gray-600 space-y-4">
-        <p>
-          La ville de <strong>{city.name}</strong>, située dans le département <strong>{city.deptName}</strong>
-          en région <strong>{city.region}</strong>, compte de nombreux installateurs qualifiés RGE
-          pour la pose de {siteConfig.niche.nameShort.toLowerCase()}.
-        </p>
-        <p>
-          Que vous habitiez en centre-ville de {city.name} ou dans les communes environnantes,
-          nos artisans partenaires interviennent dans tout le département {city.deptCode}.
-          Ils réalisent un bilan thermique gratuit avant tout devis pour vous proposer
-          la puissance et le modèle adaptés à votre logement.
-        </p>
-        <p>
-          En {city.region}, les hivers {seed % 2 === 0 ? 'rigoureux nécessitent' : 'doux permettent d\'optimiser'} le rendement
-          d'une {siteConfig.niche.nameShort.toLowerCase()}. Avec un COP saisonnier adapté aux conditions locales,
-          vous pouvez espérer diviser votre facture de chauffage par 3 dès la première année.
-        </p>
-      </div>
-    </div>
-  </section>
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg my-6">
+            <h3 class="text-blue-900 font-bold text-base mb-2">💡 Conseil local — {city.name}</h3>
+            <p class="text-blue-800 text-sm">{lc.local_tip}</p>
+          </div>
 
-  <!-- FAQ -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <FAQ items={siteConfig.faq} cityName={city.name} />
-  </section>
+          <p class="italic text-gray-500 border-l-2 border-gray-200 pl-4">
+            📜 {lc.history_anecdote}
+          </p>
+        </div>
+      </section>
+    )}
 
-  <!-- Nearby Cities & Internal Linking -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <h2 class="text-2xl font-bold text-gray-900 mb-2">
-      📍 {siteConfig.niche.nameShort} près de {city.name}
-    </h2>
-    <p class="text-gray-500 text-sm mb-6">Nos installateurs interviennent aussi dans ces villes voisines</p>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      {nearbyCities.map((nc) => (
-        <a
-          href={`/${nc.slug}`}
-          class="bg-white border border-gray-200 rounded-xl px-4 py-3 hover:border-brand-300 hover:shadow-md transition-all group text-center"
-        >
-          <span class="font-semibold text-gray-900 group-hover:text-brand-600 text-sm block">{nc.name}</span>
-          <span class="text-xs text-gray-400">{nc.zip}</span>
-        </a>
-      ))}
-    </div>
-  </section>
+    {/* Section: Market Data */}
+    {lc?.market_data && (
+      <section class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-200 p-6 md:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-3">
+          📊 Baromètre des prix — {city.deptName} ({city.deptCode})
+        </h2>
+        <p class="text-gray-700 leading-relaxed">{lc.market_data}</p>
+      </section>
+    )}
 
-  <!-- Final CTA -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 md:pb-8">
-    <div class="bg-gradient-to-r from-brand-600 to-brand-800 rounded-2xl p-8 text-center text-white">
-      <h2 class="text-xl md:text-2xl font-bold mb-3">
-        Obtenez vos 3 devis {siteConfig.niche.nameShort} à {city.name}
-      </h2>
-      <p class="text-brand-100 mb-5 text-sm">
-        Gratuit • Sans engagement • Artisans RGE du {city.deptName}
+    {/* Section: Generic Local Content (for cities without rich content) */}
+    {!lc && (
+      <section class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          🏠 Installer une {siteConfig.niche.nameShort} à {city.name}
+        </h2>
+        <div class="prose max-w-none text-gray-600 space-y-4">
+          <p>
+            La ville de <strong>{city.name}</strong>, située dans le département <strong>{city.deptName}</strong>
+            en région <strong>{city.region}</strong>, compte de nombreux installateurs qualifiés RGE
+            pour la pose de {siteConfig.niche.nameShort.toLowerCase()}.
+          </p>
+          <p>
+            Que vous habitiez en centre-ville de {city.name} ou dans les communes environnantes,
+            nos artisans partenaires interviennent dans tout le département {city.deptCode}.
+            Ils réalisent un bilan thermique gratuit avant tout devis pour vous proposer
+            la puissance et le modèle adaptés à votre logement.
+          </p>
+          <p>
+            En zone climatique <strong>{zone}</strong> ({city.region}),
+            {zone === 'H1' ? " les hivers rigoureux nécessitent un modèle haute température (65°C) pour garantir un confort optimal. Les aides MaPrimeRénov' y sont plus généreuses pour compenser le surcoût d'équipement." :
+             zone === 'H3' ? " le climat méditerranéen doux permet d'utiliser un modèle standard avec un COP saisonnier exceptionnel, souvent supérieur à 4. C'est la zone la plus rentable de France pour la PAC air/eau." :
+             " le climat tempéré offre un excellent compromis entre performance et coût d'installation. Un modèle standard 55°C convient dans la plupart des cas."}
+          </p>
+          <p>
+            Le prix moyen d'une {siteConfig.niche.nameShort.toLowerCase()} dans le {city.deptName} se situe entre
+            <strong>{zone === 'H1' ? '10 500€ et 16 000€' : zone === 'H3' ? '8 500€ et 13 000€' : '9 500€ et 14 500€'}</strong> TTC pose comprise.
+            Après déduction des aides (MaPrimeRénov' + CEE + TVA 5,5%), le reste à charge
+            moyen est de <strong>{zone === 'H1' ? '4 000€ à 8 000€' : zone === 'H3' ? '3 000€ à 6 000€' : '3 500€ à 7 000€'}</strong>.
+          </p>
+        </div>
+      </section>
+    )}
+
+    {/* Section: Price Table */}
+    <section>
+      <p class="text-sm text-gray-500 mb-4">
+        💡 Les prix ci-dessous sont des moyennes nationales. À {city.name} ({city.region}),
+        les tarifs peuvent varier de ±{zone === 'H1' ? '15' : zone === 'H3' ? '10' : '10'}% selon
+        l'accessibilité du chantier, la puissance nécessaire et la marque choisie.
       </p>
-      <a href="/devis" class="inline-block bg-white text-brand-700 font-bold px-8 py-3.5 rounded-xl hover:bg-brand-50 transition-colors shadow-lg">
-        Demander mes devis →
-      </a>
-    </div>
-  </section>
+      <PriceTable />
+    </section>
+
+    {/* Section: Detailed Technical Guide */}
+    <section class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">
+        ⚙️ Guide technique : choisir sa {siteConfig.niche.nameShort} à {city.name}
+      </h2>
+      <div class="prose max-w-none text-gray-600 space-y-6">
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Quelle puissance pour votre logement ?</h3>
+          <p>
+            Le dimensionnement est crucial pour le rendement et la longévité de votre {siteConfig.niche.nameShort.toLowerCase()}.
+            En {city.region} (zone {zone}), comptez :
+          </p>
+          <ul class="space-y-2 mt-3">
+            <li class="flex items-start gap-2">
+              <span class="text-brand-600 font-bold">→</span>
+              <span><strong>80-100 W/m²</strong> pour une maison bien isolée (BBC, RT2012 ou rénovation récente)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-600 font-bold">→</span>
+              <span><strong>120-150 W/m²</strong> pour une maison moyennement isolée (avant 2000, DPE D-E)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-600 font-bold">→</span>
+              <span><strong>150-200 W/m²</strong> pour une passoire thermique (avant 1975, DPE F-G)</span>
+            </li>
+          </ul>
+          <p class="mt-3">
+            <strong>Exemple</strong> : pour une maison de 130m² à {city.name} avec isolation correcte,
+            il faut une PAC de {zone === 'H1' ? '13 à 16 kW' : zone === 'H3' ? '10 à 13 kW' : '11 à 14 kW'}.
+            Un bilan thermique professionnel (inclus dans nos devis gratuits) est indispensable.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Les marques recommandées par nos installateurs à {city.name}</h3>
+          <div class="grid sm:grid-cols-2 gap-4 mt-3">
+            <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+              <h4 class="font-bold text-gray-900">🇫🇷 Atlantic (Alfea Excellia AI)</h4>
+              <p class="text-sm text-gray-600 mt-1">Fabricant français, excellent SAV. Modèle connecté avec pilotage intelligent. Idéal en rénovation.</p>
+              <span class="text-xs text-brand-600 font-medium mt-2 block">À partir de 9 500€ TTC posé</span>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+              <h4 class="font-bold text-gray-900">🇯🇵 Daikin (Altherma 3 H)</h4>
+              <p class="text-sm text-gray-600 mt-1">Leader mondial, fiabilité légendaire. Fonctionne jusqu'à -25°C. Idéal en {zone === 'H1' ? 'zone froide' : 'toutes zones'}.</p>
+              <span class="text-xs text-brand-600 font-medium mt-2 block">À partir de 10 500€ TTC posé</span>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+              <h4 class="font-bold text-gray-900">🇯🇵 Mitsubishi (Ecodan)</h4>
+              <p class="text-sm text-gray-600 mt-1">Technologie Zubadan pour climate froid. Ultra-silencieux (< 45 dB). Garantie compresseur 7 ans.</p>
+              <span class="text-xs text-brand-600 font-medium mt-2 block">À partir de 10 000€ TTC posé</span>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+              <h4 class="font-bold text-gray-900">🇩🇪 Bosch (Compress 7000i)</h4>
+              <p class="text-sm text-gray-600 mt-1">Qualité allemande, excellent rapport qualité/prix. Interface simple et intégration domotique.</p>
+              <span class="text-xs text-brand-600 font-medium mt-2 block">À partir de 8 500€ TTC posé</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">PAC Air/Eau vs autres solutions à {city.name}</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead>
+                <tr class="bg-gray-50 text-gray-500 border-b border-gray-200">
+                  <th class="px-4 py-3 text-left font-semibold">Solution</th>
+                  <th class="px-4 py-3 text-left font-semibold">Coût annuel (130m²)</th>
+                  <th class="px-4 py-3 text-left font-semibold">Émissions CO₂</th>
+                  <th class="px-4 py-3 text-left font-semibold">Confort</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr class="bg-green-50 font-semibold">
+                  <td class="px-4 py-3 text-green-800">✅ PAC Air/Eau</td>
+                  <td class="px-4 py-3 text-green-700">{zone === 'H1' ? '800 – 1 200€' : zone === 'H3' ? '500 – 800€' : '600 – 1 000€'}</td>
+                  <td class="px-4 py-3 text-green-700">~30 gCO₂/kWh</td>
+                  <td class="px-4 py-3 text-green-700">⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">Chaudière gaz condensation</td>
+                  <td class="px-4 py-3">{zone === 'H1' ? '1 800 – 2 500€' : '1 200 – 1 800€'}</td>
+                  <td class="px-4 py-3">~227 gCO₂/kWh</td>
+                  <td class="px-4 py-3">⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">Chaudière fioul</td>
+                  <td class="px-4 py-3">{zone === 'H1' ? '2 500 – 3 500€' : '1 800 – 2 500€'}</td>
+                  <td class="px-4 py-3">~324 gCO₂/kWh</td>
+                  <td class="px-4 py-3">⭐⭐⭐</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">Radiateurs électriques</td>
+                  <td class="px-4 py-3">{zone === 'H1' ? '2 800 – 4 000€' : '1 500 – 2 500€'}</td>
+                  <td class="px-4 py-3">~60 gCO₂/kWh</td>
+                  <td class="px-4 py-3">⭐⭐</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Déroulement de l'installation à {city.name}</h3>
+          <ol class="space-y-3 mt-3 list-decimal list-inside">
+            <li><strong>Visite technique gratuite</strong> — L'installateur RGE évalue votre logement, réalise le bilan thermique et détermine la puissance nécessaire. Durée : 1h-1h30.</li>
+            <li><strong>Devis détaillé</strong> — Vous recevez un devis précisant la marque, le modèle, la puissance, les aides déductibles et le reste à charge. Vous comparez nos 3 devis.</li>
+            <li><strong>Montage du dossier d'aides</strong> — L'artisan vous aide à constituer les dossiers MaPrimeRénov' et CEE. Il ne faut PAS signer avant d'avoir déposé les demandes.</li>
+            <li><strong>Installation</strong> — Pose de l'unité extérieure, raccordement hydraulique au circuit de chauffage, mise en service. Durée : 2-3 jours.</li>
+            <li><strong>Mise en service & formation</strong> — Le technicien configure la PAC, programme les courbes de chauffe et vous explique le fonctionnement du thermostat.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    {/* Section: Process Steps */}
+    <ProcessSteps />
+
+    {/* Section: FAQ (merged generic + local) */}
+    {lc ? (
+      <FAQ items={[
+        ...siteConfig.faq,
+        { q: lc.faq_local.question, a: lc.faq_local.answer }
+      ]} cityName={city.name} />
+    ) : (
+      <FAQ items={siteConfig.faq} cityName={city.name} />
+    )}
+
+    {/* Section: Nearby Cities */}
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">
+        📍 {siteConfig.niche.nameShort} près de {city.name}
+      </h2>
+      <p class="text-gray-500 text-sm mb-6">Nos installateurs interviennent aussi dans ces villes du {city.deptName}</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {nearbyCities.map((nc) => (
+          <a
+            href={`/${nc.slug}`}
+            class="bg-white border border-gray-200 rounded-xl px-4 py-3 hover:border-brand-300 hover:shadow-md transition-all group text-center"
+          >
+            <span class="font-semibold text-gray-900 group-hover:text-brand-600 text-sm block">{nc.name}</span>
+            <span class="text-xs text-gray-400">{nc.zip} • {nc.deptName}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    {/* Section: Final CTA */}
+    <section class="pb-20 md:pb-0">
+      <div class="bg-gradient-to-r from-brand-600 to-brand-800 rounded-2xl p-8 text-center text-white">
+        <h2 class="text-xl md:text-2xl font-bold mb-3">
+          Obtenez vos 3 devis {siteConfig.niche.nameShort} à {city.name}
+        </h2>
+        <p class="text-brand-100 mb-5 text-sm">
+          Gratuit • Sans engagement • Artisans RGE du {city.deptName}
+        </p>
+        <a href="/devis" class="inline-block bg-white text-brand-700 font-bold px-8 py-3.5 rounded-xl hover:bg-brand-50 transition-colors shadow-lg">
+          Demander mes devis →
+        </a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
