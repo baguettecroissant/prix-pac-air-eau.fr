@@ -119,11 +119,59 @@ const canonicalUrl = canonical
     </div>
   </footer>
 
-  <!-- Sticky Mobile CTA -->
-  <div class="fixed bottom-0 left-0 right-0 md:hidden z-40 bg-white border-t border-gray-200 p-3 shadow-xl sticky-cta-enter">
-    <a href="/devis" class="block w-full bg-brand-600 hover:bg-brand-700 text-white text-center py-3.5 rounded-xl font-bold text-base shadow-lg transition-all">
+  <!-- Sticky Mobile CTA — Smart: hides on /devis and when form is visible -->
+  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 md:hidden z-40 bg-white border-t border-gray-200 p-3 shadow-xl sticky-cta-enter transition-transform duration-300" style="transform: translateY(100%);">
+    <a href="#devis-form" class="block w-full bg-brand-600 hover:bg-brand-700 text-white text-center py-3.5 rounded-xl font-bold text-base shadow-lg transition-all">
       {siteConfig.niche.emoji} Devis Gratuit — Sans Engagement
     </a>
   </div>
+
+  <script is:inline>
+  (function() {
+    var cta = document.getElementById('sticky-cta');
+    if (!cta) return;
+
+    // Hide entirely on /devis page
+    if (window.location.pathname === '/devis' || window.location.pathname === '/devis/') {
+      cta.style.display = 'none';
+      return;
+    }
+
+    var formVisible = false;
+    var scrolledPastHero = false;
+
+    function updateCTA() {
+      if (formVisible || !scrolledPastHero) {
+        cta.style.transform = 'translateY(100%)';
+      } else {
+        cta.style.transform = 'translateY(0)';
+      }
+    }
+
+    // Show CTA only after scrolling past 300px
+    window.addEventListener('scroll', function() {
+      scrolledPastHero = window.scrollY > 300;
+      updateCTA();
+    }, { passive: true });
+
+    // Hide when form widget is visible in viewport
+    var formEl = document.getElementById('devis-form');
+    if (formEl && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        formVisible = entries[0].isIntersecting;
+        updateCTA();
+      }, { threshold: 0.3 });
+      observer.observe(formEl);
+    }
+
+    // Smooth scroll to form on click
+    cta.querySelector('a').addEventListener('click', function(e) {
+      if (formEl) {
+        e.preventDefault();
+        formEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

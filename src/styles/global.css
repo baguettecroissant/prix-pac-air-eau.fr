@@ -40,6 +40,30 @@ body {
   min-height: 400px;
 }
 
+/* Fix: Tailwind CSS reset kills widget internal styles */
+[id$="d"] {
+  all: initial;
+  display: block;
+  width: 100%;
+  min-height: 400px;
+  font-family: 'Inter', sans-serif;
+}
+
+[id$="d"] * {
+  all: revert;
+  box-sizing: border-box;
+}
+
+[id$="d"] a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+[id$="d"] img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* === Sticky CTA Animation === */
 .sticky-cta-enter {
   animation: slideUp 0.3s ease-out;
