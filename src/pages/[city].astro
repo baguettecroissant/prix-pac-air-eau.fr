@@ -132,7 +132,7 @@ const sectionOrder = [0, 1, 2, 3, 4].sort((a, b) => {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Breadcrumbs items={[
         { label: "Annuaire", href: "/annuaire" },
-        { label: city.deptName, href: `/annuaire#dept-${city.deptCode}` },
+        { label: city.deptName, href: `/departement/${city.deptCode.toLowerCase()}` },
         { label: city.name, href: `/${city.slug}` },
       ]} />
 

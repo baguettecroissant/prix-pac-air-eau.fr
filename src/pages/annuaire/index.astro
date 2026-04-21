@@ -29,7 +29,9 @@ const departments = getAllDepartments();
         <div id={`dept-${dept.code}`} class="mb-10">
           <h2 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
             <span class="bg-brand-100 text-brand-700 px-2 py-0.5 rounded text-sm font-mono">{dept.code}</span>
-            {dept.name}
+            <a href={`/departement/${dept.code.toLowerCase()}`} class="hover:text-brand-600 transition-colors">
+              {dept.name}
+            </a>
             <span class="text-gray-400 text-sm font-normal">({dept.region})</span>
           </h2>
           <div class="flex flex-wrap gap-2 mt-3">
