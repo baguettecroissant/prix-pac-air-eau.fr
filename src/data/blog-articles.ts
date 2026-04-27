@@ -1,6 +1,6 @@
 /**
- * Blog articles data — 5 pillar articles for SEO
- * Each article targets a high-volume informational keyword
+ * Blog articles data — 8 pillar articles for SEO
+ * Each article targets a high-volume informational keyword for Poêle à bois
  */
 
 export interface BlogArticle {
@@ -19,408 +19,306 @@ export interface BlogArticle {
 
 export const blogArticles: BlogArticle[] = [
   {
-    slug: "prix-pompe-a-chaleur-air-eau",
-    title: "Prix d'une Pompe à Chaleur Air/Eau en 2026 : Guide Complet",
-    metaTitle: "Prix Pompe à Chaleur Air/Eau 2026 — Tarifs, Aides & Devis",
-    metaDescription: "Quel est le prix d'une pompe à chaleur air/eau en 2026 ? De 8 000€ à 18 000€ TTC selon la puissance. Guide complet : tarifs par marque, aides MaPrimeRénov', CEE et reste à charge réel.",
-    excerpt: "De 8 000€ à 18 000€ TTC pose comprise en 2026. Découvrez les prix détaillés par puissance, marque et type d'installation, et calculez votre reste à charge après aides.",
+    slug: "prix-poele-bois-2026",
+    title: "Prix détaillé d'un poêle à bois en 2026 : Budget complet",
+    metaTitle: "Prix Poêle à bois 2026 — Tarifs, Aides & Devis",
+    metaDescription: "Quel est le prix d'un poêle à bois en 2026 ? De 2 500€ à 8 000€ TTC posé. Guide complet : tarifs, création de conduit, aides MaPrimeRénov'.",
+    excerpt: "De 2 500€ à 8 000€ TTC pose comprise en 2026. Découvrez les prix détaillés pour l'installation d'un poêle à bois, le tubage du conduit, et calculez votre reste à charge.",
     date: "2026-01-15",
-    readTime: "12 min",
+    readTime: "10 min",
     category: "Prix",
     emoji: "💰",
-    image: "/images/blog/hero-pac-maison.png",
+    image: "/images/blog/guide-1.jpg",
     content: `
-<p>Le prix d'une <strong>pompe à chaleur air/eau</strong> varie entre <strong>8 000€ et 18 000€ TTC</strong> pose comprise en 2026. Cette fourchette large s'explique par les différences de puissance (8 à 16 kW), de marque (Atlantic, Daikin, Mitsubishi, Bosch), et de complexité d'installation. Mais grâce aux aides de l'État, le <strong>reste à charge réel peut descendre sous les 5 000€</strong>.</p>
+<p>Le prix d'un <strong>poêle à bois</strong> varie entre <strong>2 500€ et 8 000€ TTC</strong> pose comprise en 2026. Cette fourchette large s'explique par les différences de gamme, la nécessité ou non de créer un conduit de fumée (fumésterie) et le choix du professionnel. Mais grâce aux aides de l'État, cet investissement est très vite rentabilisé.</p>
 
-<h2>Prix d'une PAC air/eau par puissance en 2026</h2>
-<p>Le premier critère qui détermine le prix est la <strong>puissance nécessaire</strong>, elle-même liée à la surface de votre logement et à son isolation :</p>
+<h2>Prix d'un poêle à bois selon la gamme (Posé)</h2>
+<p>Le premier critère qui détermine le prix est la <strong>gamme du poêle</strong> :</p>
 
 <table>
-<thead><tr><th>Puissance</th><th>Surface indicative</th><th>Prix TTC posé</th><th>Cas d'usage</th></tr></thead>
+<thead><tr><th>Gamme</th><th>Caractéristiques</th><th>Prix TTC posé (avec tubage existant)</th></tr></thead>
 <tbody>
-<tr><td><strong>6-8 kW</strong></td><td>60-90 m²</td><td>7 000 – 10 000€</td><td>Appartement ou petite maison bien isolée</td></tr>
-<tr><td><strong>8-10 kW</strong></td><td>90-120 m²</td><td>8 000 – 12 000€</td><td>Maison standard, chauffage seul</td></tr>
-<tr><td><strong>10-14 kW</strong></td><td>120-160 m²</td><td>10 000 – 15 000€</td><td>Maison familiale, chauffage + ECS</td></tr>
-<tr><td><strong>14-16 kW</strong></td><td>160-200 m²</td><td>12 000 – 18 000€</td><td>Grande maison ou isolation faible</td></tr>
+<tr><td><strong>Standard</strong></td><td>Acier, design simple, rendement classique</td><td>2 500 – 3 500€</td></tr>
+<tr><td><strong>Intermédiaire</strong></td><td>Fonte, design moderne, haut rendement (>80%)</td><td>3 500 – 5 000€</td></tr>
+<tr><td><strong>Premium</strong></td><td>Sur-mesure, accumulation de chaleur, céramique</td><td>5 000 – 8 000€</td></tr>
 </tbody>
 </table>
 
-<p>💡 <strong>Règle d'or</strong> : ne jamais surdimensionner votre PAC. Une PAC trop puissante coûte plus cher à l'achat ET consomme plus par des cycles courts répétés (phénomène de « cycling »). Le bilan thermique préalable est indispensable.</p>
+<p>💡 <strong>Règle d'or</strong> : le poêle doit correspondre à votre besoin réel (chauffage d'appoint vs principal) et à l'isolation de votre maison. Inutile de payer 8 000€ pour un poêle de masse si vous vivez dans une maison RT2012 de 80m².</p>
 
-<h2>Prix par marque : comparatif 2026</h2>
-<p>Les prix varient significativement selon la marque choisie. Voici un comparatif des 6 marques les plus installées en France :</p>
-
-<table>
-<thead><tr><th>Marque</th><th>Modèle phare</th><th>Prix 10-14 kW posé</th><th>Points forts</th></tr></thead>
-<tbody>
-<tr><td>🇫🇷 <strong>Atlantic</strong></td><td>Alfea Excellia AI</td><td>10 500 – 14 000€</td><td>Fabrication française, SAV réactif, pilotage IA</td></tr>
-<tr><td>🇯🇵 <strong>Daikin</strong></td><td>Altherma 3 H</td><td>11 000 – 15 000€</td><td>Leader mondial, fiabilité, fonctionne jusqu'à -25°C</td></tr>
-<tr><td>🇯🇵 <strong>Mitsubishi</strong></td><td>Ecodan Zubadan</td><td>10 500 – 14 500€</td><td>Technologie Zubadan (grand froid), ultra-silencieux</td></tr>
-<tr><td>🇩🇪 <strong>Bosch</strong></td><td>Compress 7000i AW</td><td>9 000 – 12 500€</td><td>Excellent rapport qualité/prix, interface simple</td></tr>
-<tr><td>🇩🇪 <strong>Viessmann</strong></td><td>Vitocal 200-A</td><td>10 000 – 13 500€</td><td>Robustesse allemande, réseau SAV dense</td></tr>
-<tr><td>🇫🇷 <strong>De Dietrich</strong></td><td>Alezio V220</td><td>9 500 – 13 000€</td><td>Fabricant français historique, fiable</td></tr>
-</tbody>
-</table>
-
-<h2>Coûts annexes à prévoir</h2>
-<p>Le prix de la PAC seule ne suffit pas. Prévoyez ces postes supplémentaires :</p>
+<h2>La création ou le tubage du conduit : le coût caché</h2>
+<p>Un poêle à bois ne fonctionne pas seul : il nécessite un <strong>conduit d'évacuation des fumées aux normes (NF DTU 24.1)</strong>. C'est souvent ce poste qui fait gonfler le devis :</p>
 <ul>
-<li><strong>Ballon tampon (200-300L)</strong> : 800 – 1 500€ — recommandé pour optimiser les cycles</li>
-<li><strong>Ballon ECS thermodynamique</strong> : 1 200 – 2 500€ — si production d'eau chaude intégrée</li>
-<li><strong>Dépose de l'ancienne chaudière</strong> : 500 – 1 500€ — incluse dans la plupart des devis</li>
-<li><strong>Modification du circuit hydraulique</strong> : 500 – 3 000€ — si passage en plancher chauffant</li>
-<li><strong>Dalle béton pour unité extérieure</strong> : 200 – 600€</li>
-<li><strong>Contrat de maintenance annuel</strong> : 150 – 300€/an — obligatoire depuis 2020</li>
+<li><strong>Vous n'avez pas de conduit (Création)</strong> : L'installateur devra créer un conduit extérieur ou intérieur isolé (type Poujoulat). Prévoyez <strong>1 500€ à 3 000€</strong> supplémentaires.</li>
+<li><strong>Vous avez un vieux conduit maçonné (Tubage)</strong> : Il faut le tuber avec une gaine en inox pour des raisons de sécurité. Comptez <strong>500€ à 1 000€</strong>.</li>
+<li><strong>Vous avez déjà un conduit tubé aux normes</strong> : Le coût d'installation sera minime (raccordement simple).</li>
 </ul>
 
-<h2>Reste à charge après aides en 2026</h2>
-<p>Les aides cumulables permettent de réduire drastiquement le coût :</p>
-
-<table>
-<thead><tr><th>Profil de revenus</th><th>MaPrimeRénov'</th><th>CEE</th><th>TVA 5,5%</th><th>Reste à charge (PAC à 13 000€)</th></tr></thead>
-<tbody>
-<tr><td><strong>Très modestes</strong></td><td>11 000€</td><td>4 000€</td><td>~950€</td><td><strong>≈ 0 – 2 000€</strong> 🟢</td></tr>
-<tr><td><strong>Modestes</strong></td><td>8 000€</td><td>4 000€</td><td>~950€</td><td><strong>≈ 1 000 – 4 000€</strong></td></tr>
-<tr><td><strong>Intermédiaires</strong></td><td>4 000€</td><td>2 500€</td><td>~950€</td><td><strong>≈ 5 500 – 8 000€</strong></td></tr>
-<tr><td><strong>Aisés</strong></td><td>0€</td><td>2 500€</td><td>~950€</td><td><strong>≈ 9 500 – 12 000€</strong></td></tr>
-</tbody>
-</table>
-
-<p>➕ <strong>L'Éco-PTZ</strong> permet de financer le reste à charge avec un prêt à taux 0% jusqu'à 50 000€ sur 20 ans. Résultat : <strong>aucun frais d'avance</strong> pour de nombreux foyers.</p>
-
-<h2>Comment obtenir le meilleur prix ?</h2>
+<h2>Comment réduire la facture ?</h2>
 <ol>
-<li><strong>Comparez 3 devis minimum</strong> — les écarts de prix peuvent atteindre 30% pour la même prestation</li>
-<li><strong>Vérifiez la certification RGE</strong> — obligatoire pour bénéficier de toutes les aides</li>
-<li><strong>Privilégiez les installateurs locaux</strong> — déplacement moins cher, SAV plus rapide</li>
-<li><strong>Négociez le contrat de maintenance</strong> — souvent offert la 1ère année si vous insistez</li>
-<li><strong>Évitez les offres « à 1€ »</strong> — elles n'existent plus depuis 2022 et masquent souvent du matériel bas de gamme</li>
+<li><strong>Les Aides de l'État</strong> : MaPrimeRénov' peut prendre en charge jusqu'à 2 500€ sur la pose de votre poêle. S'ajoutent à cela la Prime Énergie (CEE) et la TVA réduite à 5,5%.</li>
+<li><strong>Comparez 3 devis</strong> : Les tarifs de pose varient fortement d'un artisan à l'autre. Utilisez notre comparateur pour faire jouer la concurrence.</li>
 </ol>
 `
   },
   {
-    slug: "aides-maprimenov-pac-2026",
-    title: "Aides MaPrimeRénov' PAC Air/Eau 2026 : Montants, Conditions & Cumul",
-    metaTitle: "Aides MaPrimeRénov' PAC Air/Eau 2026 — Montants & Conditions",
-    metaDescription: "Toutes les aides pour installer une PAC air/eau en 2026 : MaPrimeRénov' (jusqu'à 11 000€), CEE, TVA 5,5%, Éco-PTZ. Conditions, plafonds et cumul expliqués simplement.",
-    excerpt: "MaPrimeRénov', CEE, TVA 5,5%, Éco-PTZ... Jusqu'à 16 000€ d'aides cumulées pour votre pompe à chaleur air/eau. Guide complet des conditions et montants 2026.",
-    date: "2026-01-20",
-    readTime: "10 min",
-    category: "Aides",
-    emoji: "🏛️",
-    image: "/images/blog/hero-pac-maison.png",
-    content: `
-<p>L'installation d'une <strong>pompe à chaleur air/eau</strong> en 2026 bénéficie de <strong>jusqu'à 16 000€ d'aides cumulées</strong>. Entre MaPrimeRénov', les Certificats d'Économies d'Énergie (CEE), la TVA réduite et l'Éco-PTZ, le reste à charge peut descendre sous les 2 000€ pour les foyers les plus modestes. Voici le guide complet.</p>
-
-<h2>MaPrimeRénov' 2026 : jusqu'à 11 000€</h2>
-<p>MaPrimeRénov' est l'aide principale de l'État pour la rénovation énergétique. Pour une PAC air/eau, les montants 2026 sont :</p>
-
-<table>
-<thead><tr><th>Profil de revenus</th><th>Montant MaPrimeRénov'</th><th>Plafond de revenus (Île-de-France)</th><th>Plafond (Province)</th></tr></thead>
-<tbody>
-<tr><td>🔵 <strong>Très modestes</strong></td><td><strong>11 000€</strong></td><td>23 541€ (1 pers.)</td><td>17 009€ (1 pers.)</td></tr>
-<tr><td>🟡 <strong>Modestes</strong></td><td><strong>8 000€</strong></td><td>28 657€ (1 pers.)</td><td>21 805€ (1 pers.)</td></tr>
-<tr><td>🟣 <strong>Intermédiaires</strong></td><td><strong>4 000€</strong></td><td>40 018€ (1 pers.)</td><td>30 549€ (1 pers.)</td></tr>
-<tr><td>🔴 <strong>Aisés</strong></td><td><strong>0€</strong></td><td>> 40 018€</td><td>> 30 549€</td></tr>
-</tbody>
-</table>
-
-<h3>Conditions d'éligibilité</h3>
-<ul>
-<li>Logement construit depuis <strong>plus de 15 ans</strong> (ou 2 ans si remplacement de chaudière fioul)</li>
-<li>Résidence principale occupée au moins <strong>8 mois par an</strong></li>
-<li>Travaux réalisés par un artisan <strong>certifié RGE</strong></li>
-<li>PAC air/eau de <strong>COP ≥ 3,4</strong> (tous les modèles récents le sont)</li>
-<li>Demande déposée <strong>AVANT la signature du devis</strong> — crucial !</li>
-</ul>
-
-<h2>Prime CEE (Certificats d'Économies d'Énergie) : 2 500 à 5 000€</h2>
-<p>La prime CEE est financée par les fournisseurs d'énergie (EDF, Engie, Total...) et est <strong>cumulable avec MaPrimeRénov'</strong>.</p>
-
-<table>
-<thead><tr><th>Zone climatique</th><th>Revenus modestes</th><th>Revenus standards</th></tr></thead>
-<tbody>
-<tr><td>H1 (Nord, Est, Montagne)</td><td><strong>4 000 – 5 000€</strong></td><td>2 500 – 3 500€</td></tr>
-<tr><td>H2 (Centre, Ouest)</td><td><strong>3 000 – 4 000€</strong></td><td>2 000 – 3 000€</td></tr>
-<tr><td>H3 (Méditerranée)</td><td><strong>2 500 – 3 500€</strong></td><td>1 500 – 2 500€</td></tr>
-</tbody>
-</table>
-
-<p>⚠️ <strong>Attention</strong> : ne signez JAMAIS votre devis avant d'avoir reçu l'offre CEE. Sinon, vous perdez la prime.</p>
-
-<h2>TVA réduite à 5,5%</h2>
-<p>La TVA sur le matériel ET la main d'œuvre est réduite à 5,5% (au lieu de 20%) si :</p>
-<ul>
-<li>Le logement a <strong>plus de 2 ans</strong></li>
-<li>Les travaux sont réalisés par un <strong>professionnel</strong></li>
-<li>Il s'agit de votre <strong>résidence principale ou secondaire</strong></li>
-</ul>
-<p>Pour une PAC à 13 000€ HT, l'économie est de <strong>~1 900€</strong> (5,5% vs 20%).</p>
-
-<h2>Éco-PTZ : jusqu'à 50 000€ à taux 0%</h2>
-<p>L'Éco-Prêt à Taux Zéro permet de financer le reste à charge <strong>sans intérêts</strong> :</p>
-<ul>
-<li><strong>Montant</strong> : jusqu'à 50 000€ pour un bouquet de travaux</li>
-<li><strong>Durée</strong> : jusqu'à 20 ans</li>
-<li><strong>Conditions</strong> : aucune condition de revenus</li>
-<li><strong>Disponible</strong> dans toutes les banques partenaires</li>
-</ul>
-
-<h2>Aides locales complémentaires</h2>
-<p>De nombreuses collectivités proposent des aides supplémentaires :</p>
-<ul>
-<li><strong>Région Île-de-France</strong> : aide Éco-Énergie jusqu'à 4 000€</li>
-<li><strong>Métropole de Lyon</strong> : programme Écoréno'v jusqu'à 5 000€</li>
-<li><strong>Ville de Paris</strong> : aide de l'Agence Parisienne du Climat</li>
-<li><strong>Région Bretagne</strong> : AQTA jusqu'à 3 000€</li>
-</ul>
-<p>Consultez l'ADIL de votre département pour connaître les aides locales disponibles.</p>
-
-<h2>Ordre optimal pour maximiser les aides</h2>
-<ol>
-<li><strong>Demandez vos devis</strong> (3 minimum) — ne signez rien !</li>
-<li><strong>Déposez votre demande MaPrimeRénov'</strong> sur maprimerenov.gouv.fr</li>
-<li><strong>Obtenez votre offre CEE</strong> auprès d'un obligé (souvent via l'installateur)</li>
-<li><strong>Signez le devis</strong> et lancez les travaux</li>
-<li><strong>Payez l'artisan</strong> (le reste à charge après déduction des aides)</li>
-<li><strong>Recevez les primes</strong> (virées sous 4 à 8 semaines)</li>
-</ol>
-`
-  },
-  {
-    slug: "pac-air-eau-vs-air-air",
-    title: "PAC Air/Eau vs Air/Air : Quelle Pompe à Chaleur Choisir en 2026 ?",
-    metaTitle: "PAC Air/Eau vs Air/Air — Comparatif Complet 2026",
-    metaDescription: "Pompe à chaleur air/eau ou air/air ? Comparatif détaillé : prix, performances, aides, confort. Découvrez quelle PAC choisir selon votre logement et votre budget 2026.",
-    excerpt: "Air/eau ou air/air ? Deux technologies, deux philosophies. Comparatif détaillé pour choisir la pompe à chaleur adaptée à votre logement.",
+    slug: "criteres-choisir-installateur-poele",
+    title: "Comment bien choisir son installateur de poêle à bois ?",
+    metaTitle: "Critères Choix Installateur Poêle à bois RGE",
+    metaDescription: "Ne confiez pas la pose de votre poêle à n'importe qui ! Certification RGE QualiBois, assurances, visite technique : les critères pour choisir votre artisan.",
+    excerpt: "Certification RGE QualiBois, assurances, visite technique préalable... Découvrez tous nos conseils pour choisir le bon professionnel pour l'installation de votre poêle à bois.",
     date: "2026-02-05",
     readTime: "8 min",
-    category: "Comparatif",
-    emoji: "⚖️",
-    image: "/images/blog/hero-pac-maison.png",
-    content: `
-<p>La question revient dans 80% des consultations : <strong>PAC air/eau ou air/air ?</strong> Si les deux captent les calories de l'air extérieur, elles les restituent différemment — et cette différence change tout : prix, confort, aides, et valeur ajoutée pour votre logement.</p>
-
-<h2>La différence fondamentale</h2>
-<ul>
-<li><strong>PAC Air/Eau</strong> : chauffe un <strong>circuit d'eau</strong> → alimente radiateurs, plancher chauffant et ECS (eau chaude sanitaire)</li>
-<li><strong>PAC Air/Air</strong> : chauffe (ou refroidit) l'<strong>air ambiant</strong> → diffuse via des splits muraux (climatisation réversible)</li>
-</ul>
-
-<h2>Comparatif détaillé</h2>
-<table>
-<thead><tr><th>Critère</th><th>PAC Air/Eau</th><th>PAC Air/Air</th></tr></thead>
-<tbody>
-<tr><td><strong>Prix TTC posé</strong></td><td>8 000 – 18 000€</td><td>3 000 – 8 000€</td></tr>
-<tr><td><strong>MaPrimeRénov'</strong></td><td>Jusqu'à <strong>11 000€</strong></td><td><strong>0€</strong> (non éligible)</td></tr>
-<tr><td><strong>CEE</strong></td><td>2 500 – 5 000€</td><td>300 – 900€</td></tr>
-<tr><td><strong>Reste à charge</strong></td><td>2 000 – 8 000€</td><td>2 500 – 7 000€</td></tr>
-<tr><td><strong>Eau chaude (ECS)</strong></td><td>✅ Oui</td><td>❌ Non</td></tr>
-<tr><td><strong>Chauffage au sol</strong></td><td>✅ Compatible</td><td>❌ Impossible</td></tr>
-<tr><td><strong>Radiateurs existants</strong></td><td>✅ Compatible (HT)</td><td>❌ Impossible</td></tr>
-<tr><td><strong>Climatisation</strong></td><td>⚠️ Option réversible</td><td>✅ Natif</td></tr>
-<tr><td><strong>COP moyen</strong></td><td>3,5 – 4,5</td><td>3,0 – 4,0</td></tr>
-<tr><td><strong>Bruit intérieur</strong></td><td>Silencieux (circuit eau)</td><td>Ventilateur audible</td></tr>
-<tr><td><strong>Confort thermique</strong></td><td>⭐⭐⭐⭐⭐ (homogène)</td><td>⭐⭐⭐ (zones froides)</td></tr>
-<tr><td><strong>Durée de vie</strong></td><td>15 – 20 ans</td><td>10 – 15 ans</td></tr>
-<tr><td><strong>Valorisation immobilière</strong></td><td>✅ Forte (+DPE)</td><td>⚠️ Faible</td></tr>
-</tbody>
-</table>
-
-<h2>Quand choisir la PAC Air/Eau ?</h2>
-<ul>
-<li>Vous avez déjà des <strong>radiateurs ou un plancher chauffant</strong></li>
-<li>Vous voulez remplacer une <strong>chaudière gaz ou fioul</strong></li>
-<li>Vous voulez produire votre <strong>eau chaude sanitaire</strong></li>
-<li>Vous cherchez un <strong>confort homogène</strong> dans toutes les pièces</li>
-<li>Vous voulez maximiser les <strong>aides de l'État</strong></li>
-<li>Vous voulez <strong>valoriser votre bien immobilier</strong> (DPE amélioré)</li>
-</ul>
-
-<h2>Quand choisir la PAC Air/Air ?</h2>
-<ul>
-<li>Vous n'avez <strong>pas de circuit d'eau</strong> (chauffage tout électrique)</li>
-<li>Votre priorité est la <strong>climatisation en été</strong></li>
-<li>Votre budget est <strong>limité à 5 000€</strong></li>
-<li>Vous êtes en <strong>location</strong> ou logement provisoire</li>
-<li>Vous chauffez une <strong>seule pièce</strong> (studio, chambre)</li>
-</ul>
-
-<h2>Notre verdict</h2>
-<p>Pour 90% des maisons individuelles en France, la <strong>PAC air/eau est le meilleur choix</strong>. Malgré un coût d'achat plus élevé, les aides MaPrimeRénov' (non disponibles pour l'air/air) réduisent le reste à charge au même niveau. Et le confort, la durée de vie et la valorisation immobilière sont nettement supérieurs.</p>
-<p>La PAC air/air reste pertinente pour les appartements sans chauffage central, les petits budgets sans accès aux aides, ou quand la climatisation est la priorité absolue.</p>
-`
-  },
-  {
-    slug: "meilleure-marque-pac-air-eau",
-    title: "Quelle est la Meilleure Marque de PAC Air/Eau en 2026 ?",
-    metaTitle: "Meilleure Marque PAC Air/Eau 2026 — Top 6 Comparées",
-    metaDescription: "Atlantic, Daikin, Mitsubishi, Bosch, Viessmann, De Dietrich : quelle est la meilleure marque de PAC air/eau en 2026 ? Comparatif prix, fiabilité, SAV et rapport qualité/prix.",
-    excerpt: "Atlantic, Daikin, Mitsubishi ou Bosch ? Comparatif objectif des 6 meilleures marques de pompe à chaleur air/eau en 2026 : prix, fiabilité, SAV, innovation.",
-    date: "2026-02-15",
-    readTime: "9 min",
     category: "Guide",
-    emoji: "🏆",
-    image: "/images/blog/hero-pac-maison.png",
+    emoji: "🔍",
+    image: "/images/blog/guide-2.jpg",
     content: `
-<p>Choisir la bonne marque de <strong>pompe à chaleur air/eau</strong> est aussi important que le dimensionnement. Une marque fiable, c'est 15-20 ans de tranquillité. Une marque low-cost, c'est des pannes, du SAV et des regrets. Voici notre classement objectif 2026.</p>
+<p>L'installation d'un <strong>poêle à bois</strong> ne s'improvise pas. Au-delà du choix esthétique de l'appareil, c'est la <strong>qualité de l'installation</strong> qui garantit votre sécurité (risques d'incendie, d'intoxication au monoxyde de carbone) et le rendement de votre chauffage. Voici comment bien choisir votre artisan.</p>
 
-<h2>Top 6 des marques de PAC air/eau en France</h2>
-
-<h3>🥇 1. Daikin — Le leader mondial incontesté</h3>
-<p><strong>Modèle phare</strong> : Altherma 3 H (monobloc ou bi-bloc)</p>
+<h2>1. La certification RGE QualiBois : Non négociable</h2>
+<p>Le premier critère est absolu : votre installateur <strong>doit être certifié RGE (Reconnu Garant de l'Environnement) QualiBois</strong>. Pourquoi ?</p>
 <ul>
-<li>✅ Fiabilité exceptionnelle — leader mondial depuis 1924</li>
-<li>✅ Fonctionne jusqu'à -25°C — le meilleur en grand froid</li>
-<li>✅ Technologie inverter de référence</li>
-<li>✅ Application mobile Daikin Onecta pour le pilotage à distance</li>
-<li>⚠️ Prix premium : 11 000 – 15 000€ TTC posé</li>
-<li>⚠️ SAV parfois lent en période de forte demande</li>
-</ul>
-<p><strong>Idéal pour</strong> : les zones froides (H1), les grandes maisons, ceux qui veulent le meilleur sans compromis.</p>
-
-<h3>🥈 2. Atlantic — Le champion français</h3>
-<p><strong>Modèle phare</strong> : Alfea Excellia AI</p>
-<ul>
-<li>✅ Fabrication française (La Roche-sur-Yon) — SAV réactif</li>
-<li>✅ Pilotage intelligent par IA (auto-apprentissage de vos habitudes)</li>
-<li>✅ Excellent rapport qualité/prix français</li>
-<li>✅ Réseau d'installateurs agréés très dense</li>
-<li>⚠️ Moins performant que Daikin en dessous de -15°C</li>
-</ul>
-<p><strong>Idéal pour</strong> : ceux qui veulent un produit français, un bon SAV et le pilotage IA.</p>
-
-<h3>🥉 3. Mitsubishi Electric — L'innovation grand froid</h3>
-<p><strong>Modèle phare</strong> : Ecodan Zubadan</p>
-<ul>
-<li>✅ Technologie Zubadan exclusive — 100% de puissance à -15°C</li>
-<li>✅ Ultra-silencieux (< 45 dB unité extérieure)</li>
-<li>✅ Garantie compresseur 7 ans (la plus longue du marché)</li>
-<li>⚠️ Interface de pilotage moins intuitive que Daikin</li>
-<li>⚠️ Prix élevé en gamme Zubadan</li>
-</ul>
-<p><strong>Idéal pour</strong> : les zones de montagne, les voisinages sensibles au bruit.</p>
-
-<h3>4. Bosch — Le meilleur rapport qualité/prix</h3>
-<p><strong>Modèle phare</strong> : Compress 7000i AW</p>
-<ul>
-<li>✅ Prix très compétitif : 9 000 – 12 500€ posé</li>
-<li>✅ Qualité de fabrication allemande</li>
-<li>✅ Intégration domotique (compatible Google Home, Alexa)</li>
-<li>⚠️ Marque moins connue en PAC que Daikin ou Atlantic</li>
-</ul>
-<p><strong>Idéal pour</strong> : les budgets maîtrisés sans sacrifier la qualité.</p>
-
-<h3>5. Viessmann — La robustesse allemande</h3>
-<p><strong>Modèle phare</strong> : Vitocal 200-A / 222-A</p>
-<ul>
-<li>✅ Construction robuste — réputation de longévité</li>
-<li>✅ Réseau SAV dense en France</li>
-<li>✅ Bon COP en conditions réelles</li>
-<li>⚠️ Design de l'unité extérieure perfectible</li>
-</ul>
-<p><strong>Idéal pour</strong> : ceux qui privilégient la durabilité sur 20+ ans.</p>
-
-<h3>6. De Dietrich — L'héritage français</h3>
-<p><strong>Modèle phare</strong> : Alezio V220</p>
-<ul>
-<li>✅ Fabricant français historique depuis 1684</li>
-<li>✅ Silencieux et compact</li>
-<li>✅ Bon rapport qualité/prix</li>
-<li>⚠️ Innovation moins rapide que Daikin ou Atlantic</li>
+<li><strong>Sécurité garantie</strong> : Il maîtrise les normes complexes de fumisterie (DTU 24.1).</li>
+<li><strong>Aides financières</strong> : Si votre artisan n'est pas RGE, vous n'aurez droit ni à MaPrimeRénov', ni aux CEE, ni à l'Éco-PTZ.</li>
+<li><strong>TVA à 5,5%</strong> : Seul un artisan RGE peut l'appliquer sur le matériel et la pose.</li>
 </ul>
 
-<h2>Les marques à éviter</h2>
-<p>Méfiez-vous des marques inconnues vendues en porte-à-porte ou par des « commerciaux énergie ». Les signes d'alerte :</p>
+<h2>2. Les assurances obligatoires</h2>
+<p>Demandez systématiquement à voir l'attestation d'<strong>assurance décennale</strong> de l'artisan, et vérifiez que la mention « installation de chauffage au bois » ou « fumisterie » y figure. En cas de sinistre lié au conduit dans les 10 ans suivant la pose, c'est cette assurance qui vous protégera.</p>
+
+<h2>3. La visite technique préalable (Obligatoire)</h2>
+<p>Un professionnel sérieux <strong>ne vous fera jamais un devis définitif sur simple coup de téléphone</strong> ou sur photo. Il doit se déplacer pour une visite technique afin de :</p>
 <ul>
-<li>❌ Marque introuvable sur les sites spécialisés</li>
-<li>❌ Pas de réseau SAV en France</li>
-<li>❌ Prix anormalement bas (< 6 000€ posé)</li>
-<li>❌ Garantie compresseur < 5 ans</li>
-<li>❌ Vendeur qui insiste pour signer « aujourd'hui »</li>
+<li>Vérifier l'état du conduit existant (passage caméra si besoin).</li>
+<li>Évaluer l'isolation de votre maison et son volume pour calculer la puissance nécessaire (en kW).</li>
+<li>Vérifier les arrivées d'air frais.</li>
+<li>Étudier la faisabilité du dépassement du faîtage (le conduit doit dépasser de 40 cm le point le plus haut du toit).</li>
 </ul>
 
-<h2>Notre conseil final</h2>
-<p>Les 3 premières marques (Daikin, Atlantic, Mitsubishi) représentent <strong>75% des installations en France</strong> pour une bonne raison : elles sont fiables, performantes et bien servicées. Choisissez parmi ces trois et vous ne vous tromperez pas.</p>
+<h2>4. Le SAV et l'entretien (Ramonage)</h2>
+<p>L'artisan idéal est celui qui propose un contrat d'entretien régulier (ramonage). Le ramonage est obligatoire 1 à 2 fois par an (selon votre région et votre assurance). Un installateur qui entretient les poêles qu'il pose est un gage de suivi et de sérieux sur le long terme.</p>
 `
   },
   {
-    slug: "entretien-pompe-a-chaleur",
-    title: "Entretien Pompe à Chaleur : Prix, Fréquence & Obligations 2026",
-    metaTitle: "Entretien Pompe à Chaleur 2026 — Prix, Fréquence & Obligations",
-    metaDescription: "L'entretien d'une PAC est obligatoire tous les 2 ans depuis 2020. Prix : 150 à 300€/an. Découvrez ce que comprend la maintenance, les obligations légales et nos conseils.",
-    excerpt: "L'entretien d'une pompe à chaleur est obligatoire depuis 2020. Coût : 150 à 300€/an. Voici tout ce que vous devez savoir sur la maintenance de votre PAC.",
-    date: "2026-03-01",
+    slug: "comparer-devis-poele-bois",
+    title: "Comment comparer les devis de poêle à bois efficacement ?",
+    metaTitle: "Comparer Devis Poêle à bois — Astuces & Pièges à éviter",
+    metaDescription: "Vous avez reçu plusieurs devis pour votre poêle à bois ? Découvrez comment les décrypter, comparer les vraies prestations et éviter les arnaques.",
+    excerpt: "Face à 3 devis de poêles à bois, il est parfois difficile de s'y retrouver. Apprenez à décrypter les lignes de votre devis pour faire le meilleur choix.",
+    date: "2026-02-18",
     readTime: "7 min",
-    category: "Maintenance",
-    emoji: "🔧",
-    image: "/images/blog/hero-pac-maison.png",
+    category: "Conseil",
+    emoji: "⚖️",
+    image: "/images/blog/guide-3.jpg",
     content: `
-<p>Depuis le <strong>décret du 28 juillet 2020</strong>, l'entretien d'une pompe à chaleur contenant plus de 2 kg de fluide frigorigène est <strong>obligatoire tous les 2 ans</strong>. En pratique, la plupart des installateurs recommandent un <strong>contrat de maintenance annuel</strong> pour garantir performances et longévité. Voici tout ce qu'il faut savoir.</p>
+<p>Vous avez fait appel à notre service et vous avez maintenant <strong>3 devis entre les mains</strong> pour l'installation de votre poêle à bois. Seulement voilà : les prix varient parfois du simple au double ! Comment expliquer ces écarts et surtout, comment comparer de manière juste ?</p>
 
-<h2>Ce que comprend l'entretien d'une PAC air/eau</h2>
-<h3>Visite annuelle standard (150 – 200€)</h3>
+<h2>Ce qui doit figurer obligatoirement sur votre devis</h2>
+<p>Un devis conforme pour un poêle à bois doit comporter de nombreuses mentions obligatoires :</p>
 <ul>
-<li>Contrôle de la pression du circuit hydraulique</li>
-<li>Vérification du fluide frigorigène (pression, niveau, étanchéité)</li>
-<li>Nettoyage de l'évaporateur de l'unité extérieure</li>
-<li>Contrôle des raccordements électriques</li>
-<li>Vérification du fonctionnement du dégivrage automatique</li>
-<li>Mesure du COP réel et comparaison avec le COP nominal</li>
-<li>Contrôle du bon fonctionnement du thermostat</li>
-<li>Remise d'une attestation d'entretien</li>
+<li>Le numéro SIRET et la mention RGE QualiBois de l'artisan.</li>
+<li>La marque, le modèle précis et la puissance (en kW) du poêle.</li>
+<li>Le <strong>rendement du poêle</strong> (il doit être supérieur à 75% pour obtenir les aides, label Flamme Verte 7 étoiles idéalement).</li>
+<li>Le détail de la fumisterie : diamètre, longueur et type de tubage (simple paroi, double paroi isolé, marque type Poujoulat).</li>
+<li>Le coût exact de la main-d'œuvre.</li>
+<li>La date ou le délai de réalisation des travaux.</li>
 </ul>
 
-<h3>Visite complète tous les 2 ans (200 – 300€)</h3>
-<p>En plus de la visite standard :</p>
-<ul>
-<li>Contrôle d'étanchéité du circuit frigorifique (obligatoire > 2 kg de fluide)</li>
-<li>Mesure des performances énergétiques complètes</li>
-<li>Vérification de la conformité aux normes en vigueur</li>
-<li>Bilan de l'état général et recommandations</li>
-</ul>
+<h2>Les points de vigilance pour comparer</h2>
+<h3>Le piège de la "pose seule" sans tubage</h3>
+<p>Vérifiez toujours si le tubage est inclus. Un devis A à 3 500€ qui ne comprend qu'un raccordement simple sera au final plus cher qu'un devis B à 4 500€ qui inclut la réfection complète du conduit aux normes.</p>
 
-<h2>Prix d'un contrat de maintenance en 2026</h2>
-<table>
-<thead><tr><th>Type de contrat</th><th>Prix annuel</th><th>Inclus</th></tr></thead>
-<tbody>
-<tr><td><strong>Contrat basique</strong></td><td>150 – 200€/an</td><td>1 visite annuelle + attestation</td></tr>
-<tr><td><strong>Contrat confort</strong></td><td>200 – 250€/an</td><td>1 visite + dépannage prioritaire</td></tr>
-<tr><td><strong>Contrat premium</strong></td><td>250 – 350€/an</td><td>1 visite + dépannage 24h/24 + pièces incluses</td></tr>
-</tbody>
-</table>
-<p>💡 <strong>Astuce</strong> : négociez l'inclusion de la 1ère année de maintenance dans le devis d'installation. De nombreux installateurs acceptent.</p>
+<h3>La plaque de sol et les accessoires</h3>
+<p>Si votre sol est combustible (parquet, lino), une <strong>plaque de protection au sol</strong> est obligatoire (verre trempé, acier, ardoise). Certains devis l'incluent d'office (100 à 250€), d'autres vous la feront payer en supplément le jour de la pose.</p>
 
-<h2>Ce que vous pouvez faire vous-même</h2>
-<p>Certains gestes d'entretien ne nécessitent pas de technicien :</p>
-<ul>
-<li><strong>Tous les mois</strong> : vérifier que l'unité extérieure n'est pas obstruée (feuilles, neige, débris)</li>
-<li><strong>Au printemps</strong> : nettoyer les ailettes de l'unité extérieure au jet d'eau douce (pas de karcher !)</li>
-<li><strong>En automne</strong> : dégager le périmètre de l'unité extérieure (50 cm autour)</li>
-<li><strong>En hiver</strong> : ne JAMAIS couvrir l'unité extérieure (elle doit respirer)</li>
-<li><strong>Toute l'année</strong> : surveiller le manomètre de pression du circuit (si accessible)</li>
-</ul>
+<h3>L'arrivée d'air frais</h3>
+<p>Un poêle récent (étanche) nécessite une arrivée d'air extérieur directe (carottage dans le mur). Vérifiez que ce percement est prévu dans le devis pour éviter les surprises.</p>
 
-<h2>Signes qu'un dépannage est nécessaire</h2>
-<ul>
-<li>🔴 La PAC ne démarre plus ou se met en erreur fréquemment</li>
-<li>🔴 La facture d'électricité augmente anormalement (+20%)</li>
-<li>🔴 L'eau des radiateurs n'est plus assez chaude</li>
-<li>🔴 L'unité extérieure fait un bruit inhabituel (claquements, sifflements)</li>
-<li>🔴 Du givre persistant sur l'unité extérieure (même hors cycle de dégivrage)</li>
-<li>🔴 Fuite d'eau visible au niveau de l'unité intérieure</li>
-</ul>
-
-<h2>Impact de l'entretien sur la durée de vie</h2>
-<table>
-<thead><tr><th>Entretien</th><th>Durée de vie moyenne</th><th>COP moyen maintenu</th></tr></thead>
-<tbody>
-<tr><td>✅ Entretien annuel régulier</td><td><strong>18 – 22 ans</strong></td><td>95% du COP nominal</td></tr>
-<tr><td>⚠️ Entretien tous les 2-3 ans</td><td>12 – 16 ans</td><td>85% du COP nominal</td></tr>
-<tr><td>❌ Aucun entretien</td><td>8 – 12 ans</td><td>70% du COP nominal</td></tr>
-</tbody>
-</table>
-<p>Un entretien régulier prolonge la vie de votre PAC de <strong>6 à 10 ans</strong> et maintient des performances optimales. Sur 20 ans, les 3 000 à 5 000€ investis en maintenance se remboursent 5 à 10 fois en économies de chauffage.</p>
+<h2>Ne regardez pas que le prix final !</h2>
+<p>L'accompagnement compte énormément. L'artisan A propose-t-il de gérer les dossiers de subventions pour vous (déduction directe) ? Le SAV est-il inclus ? Le ramonage de la première année est-il offert ? Autant de détails qui peuvent faire pencher la balance vers un devis légèrement plus cher mais plus sécurisant.</p>
 `
   },
+  {
+    slug: "aides-subventions-poele-bois-2026",
+    title: "Aides financières pour poêle à bois en 2026 : Le Guide",
+    metaTitle: "Aides Poêle à bois 2026 — MaPrimeRénov', CEE, TVA",
+    metaDescription: "Installation d'un poêle à bois : profitez des aides de l'État en 2026. Montants MaPrimeRénov', conditions de la Prime Énergie et TVA à 5,5%.",
+    excerpt: "Faites baisser la facture de votre poêle à bois ! Découvrez toutes les subventions disponibles en 2026 (MaPrimeRénov', CEE, TVA réduite) et leurs conditions.",
+    date: "2026-03-01",
+    readTime: "9 min",
+    category: "Aides",
+    emoji: "🏛️",
+    image: "/images/blog/guide-4.jpg",
+    content: `
+<p>S'équiper d'un système de chauffage au bois est fortement encouragé par les pouvoirs publics en 2026, car c'est une énergie renouvelable et décarbonée. Pour faire baisser le coût de votre installation, voici les <strong>4 aides majeures</strong> que vous pouvez cumuler.</p>
+
+<h2>1. MaPrimeRénov' (Jusqu'à 2 500€)</h2>
+<p>MaPrimeRénov' reste l'aide principale. Elle est calculée en fonction de vos revenus (RFR) :</p>
+<ul>
+<li><strong>Revenus très modestes (Bleu)</strong> : 2 500€ de prime.</li>
+<li><strong>Revenus modestes (Jaune)</strong> : 2 000€ de prime.</li>
+<li><strong>Revenus intermédiaires (Violet)</strong> : 1 000€ de prime.</li>
+<li><strong>Revenus aisés (Rose)</strong> : Non éligible pour un poêle à bois.</li>
+</ul>
+<p><em>Règle d'or : La demande doit impérativement être validée sur le site officiel de l'ANAH avant la signature de votre devis !</em></p>
+
+<h2>2. La Prime Énergie (CEE)</h2>
+<p>Les Certificats d'Économies d'Énergie sont versés par les fournisseurs d'énergie (EDF, Total, grandes surfaces). Pour l'installation d'un poêle à bois (bûches ou granulés) très performant (Flamme Verte 7*), la prime peut varier de <strong>100€ à 800€</strong> selon vos revenus.</p>
+
+<h2>3. La TVA réduite à 5,5%</h2>
+<p>Au lieu des 20% habituels, la TVA s'applique au taux très réduit de 5,5% directement sur votre devis. Cela concerne à la fois <strong>la main d'œuvre ET le matériel</strong> (poêle, tubage, accessoires). Condition : votre logement doit être achevé depuis plus de 2 ans et l'installation réalisée par un pro.</p>
+
+<h2>4. L'Éco-Prêt à Taux Zéro (Éco-PTZ)</h2>
+<p>Si vous n'avez pas la trésorerie pour le reste à charge, vous pouvez emprunter <strong>jusqu'à 15 000€ sans aucun intérêt</strong> sur 20 ans pour l'installation isolée d'un chauffage au bois. Le dossier se monte avec votre banque, en présentant le devis de l'artisan RGE.</p>
+
+<h2>Exemple de financement concret</h2>
+<p>Pour un couple aux revenus très modestes achetant un poêle à bois (coût total : 4 500€ TTC posé) :</p>
+<ul>
+<li>Prix : 4 500€</li>
+<li>MaPrimeRénov' : - 2 500€</li>
+<li>Prime CEE : - 600€</li>
+<li><strong>Reste à charge réel : 1 400€</strong> (finançable à 0% !).</li>
+</ul>
+`
+  },
+  {
+    slug: "erreurs-eviter-installation-poele-bois",
+    title: "Top 5 des erreurs à éviter pour l'achat de votre poêle à bois",
+    metaTitle: "Erreurs Achat Poêle à bois — Ce qu'il ne faut pas faire",
+    metaDescription: "Surdimensionnement, mauvais emplacement, tubage non-conforme... Découvrez les 5 erreurs fréquentes lors de l'installation d'un poêle à bois.",
+    excerpt: "Un poêle mal choisi ou mal placé peut vite devenir un cauchemar (froid, salissures, surconsommation). Voici les 5 erreurs majeures à éviter absolument.",
+    date: "2026-03-12",
+    readTime: "6 min",
+    category: "Conseil",
+    emoji: "⚠️",
+    image: "/images/blog/guide-5.jpg",
+    content: `
+<p>Vous êtes décidé, vous voulez un poêle à bois ! Mais avant de craquer pour le design incroyable de ce poêle vu en magasin, prenez garde aux <strong>5 erreurs classiques</strong> qui ruinent l'expérience du chauffage au bois.</p>
+
+<h2>Erreur n°1 : Surdimensionner le poêle</h2>
+<p>C'est l'erreur la plus commune ! On se dit "qui peut le plus, peut le moins". <strong>Faux !</strong> Un poêle trop puissant pour votre pièce va vous obliger à le faire fonctionner "au ralenti" (tirage fermé) pour ne pas avoir 30°C dans le salon. <br>
+<em>Conséquences</em> : Mauvaise combustion, vitre noire en 2 jours, conduit qui s'encrasse dangereusement (bistre), et rendement ridicule.</p>
+
+<h2>Erreur n°2 : Négliger la qualité du bois</h2>
+<p>Acheter un poêle haut de gamme à 5 000€ pour y brûler du bois humide est un non-sens absolu. Le bois de chauffage DOIT avoir un taux d'humidité inférieur à 20% (environ 2 ans de séchage). Un bois humide divise le pouvoir calorifique par deux et pollue énormément.</p>
+
+<h2>Erreur n°3 : Le mauvais emplacement dans la maison</h2>
+<p>Un poêle chauffe principalement par <strong>rayonnement</strong> (pour la fonte) et par <strong>convection</strong> (pour l'acier). S'il est coincé dans une cheminée fermée ou à une extrémité d'un long couloir, la chaleur ne se diffusera pas. Placez-le idéalement au centre du rez-de-chaussée de votre maison.</p>
+
+<h2>Erreur n°4 : Oublier l'arrivée d'air frais</h2>
+<p>Le feu a besoin d'oxygène pour brûler (environ 10 m³ d'air pour 1 kg de bois !). Dans les maisons modernes très étanches (VMC, fenêtres double vitrage), le poêle peut manquer d'air : il va mal brûler ou refouler de la fumée dans le salon. Il faut impérativement une arrivée d'air connectée directement de l'extérieur vers le poêle.</p>
+
+<h2>Erreur n°5 : Poser soi-même sans respecter les normes</h2>
+<p>Les tutoriels sur internet incitent au "Do It Yourself". Mais la fumisterie répond à des règles de sécurité incendie strictes (écarts au feu, type de tubage, dépassement du toit de 40cm). Sans attestation de conformité, en cas d'incendie, votre assurance refusera toute indemnisation.</p>
+`
+  },
+  {
+    slug: "entretien-duree-vie-poele-bois",
+    title: "Entretien et durée de vie d'un poêle à bois",
+    metaTitle: "Entretien & Ramonage Poêle à bois — Guide Pratique",
+    metaDescription: "Comment entretenir son poêle à bois pour qu'il dure 20 ans ? Nettoyage de la vitre, vidange des cendres, ramonage obligatoire : le guide complet.",
+    excerpt: "Un poêle à bois bien entretenu peut durer plus de 20 ans ! Ramonage obligatoire, nettoyage quotidien, bonnes pratiques : voici notre guide d'entretien.",
+    date: "2026-03-25",
+    readTime: "6 min",
+    category: "Maintenance",
+    emoji: "🧹",
+    image: "/images/blog/guide-6.jpg",
+    content: `
+<p>Un bon poêle à bois (surtout en fonte) est un équipement extrêmement durable. Sans électronique complexe, une panne totale est rare. Cependant, <strong>un entretien régulier est indispensable</strong> pour des raisons de sécurité, de rendement, et pour garder une belle flambée.</p>
+
+<h2>Le ramonage : Obligatoire et vital !</h2>
+<p>C'est la règle numéro un. Le ramonage du conduit d'évacuation des fumées doit être effectué par un professionnel qualifié (qui vous remettra un <strong>certificat de ramonage</strong>). <br>
+<strong>Fréquence</strong> : Le Règlement Sanitaire Départemental impose généralement <strong>deux ramonages par an</strong>, dont un pendant la période de chauffe. Ce certificat est exigé par votre assurance en cas de sinistre.</p>
+
+<h2>L'entretien quotidien / hebdomadaire (Par vous-même)</h2>
+<ul>
+<li><strong>Vider le cendrier</strong> : Ne le laissez pas déborder ! Les cendres peuvent boucher l'arrivée d'air primaire et empêcher le poêle de bien tirer. Laissez tout de même un petit lit de cendre (1 cm) dans la chambre de combustion, cela protège la sole foyère et aide au démarrage du feu.</li>
+<li><strong>Nettoyer la vitre</strong> : Plus le bois est sec et l'allumage bien fait (top-down), moins la vitre s'encrasse. Pour la nettoyer de façon écologique : un papier journal humide trempé dans la cendre froide ! C'est abrasif juste ce qu'il faut et gratuit.</li>
+</ul>
+
+<h2>L'entretien annuel complet</h2>
+<p>En plus du ramonage, vérifiez (ou faites vérifier par votre pro) à la fin de la saison de chauffe :</p>
+<ul>
+<li><strong>Les joints d'étanchéité</strong> : Le joint de la porte (en fibre de verre tressée) s'use avec la chaleur. S'il n'est plus étanche, le poêle tire trop, consomme trop de bois et devient incontrôlable. Il se change facilement tous les 2 à 4 ans.</li>
+<li><strong>Les plaques intérieures (Déflecteurs, vermiculite)</strong> : Elles protègent l'enveloppe extérieure du poêle de la chaleur extrême. Si une brique réfractaire ou une plaque en vermiculite est fendue, il faut la remplacer avant la prochaine saison d'hiver.</li>
+</ul>
+
+<h2>La durée de vie estimée</h2>
+<p>Un poêle de qualité standard (acier simple) dure en moyenne <strong>10 à 15 ans</strong>. <br>
+Un poêle de haute qualité (fonte massive, accumulation) très bien entretenu peut allègrement dépasser les <strong>20 ou 25 ans</strong> !</p>
+`
+  },
+  {
+    slug: "normes-reglementation-poele-bois-2026",
+    title: "Réglementation et normes en vigueur pour les poêles à bois",
+    metaTitle: "Réglementation & Norme NF DTU 24.1 Poêle à bois",
+    metaDescription: "DTU 24.1, label Flamme Verte, interdictions locales... Tout comprendre sur les normes légales et la réglementation 2026 pour l'installation d'un poêle.",
+    excerpt: "Écarts au feu, dépassement de faîtage, label Flamme Verte... La législation concernant le chauffage au bois est stricte. Décryptage des normes 2026.",
+    date: "2026-04-05",
+    readTime: "7 min",
+    category: "Réglementation",
+    emoji: "📜",
+    image: "/images/blog/guide-7.jpg",
+    content: `
+<p>L'installation d'un poêle à bois est soumise à une législation rigoureuse. C'est normal : on manipule du feu dans une habitation ! Voici les normes principales que votre installation devra respecter en 2026.</p>
+
+<h2>La "Bible" de l'installateur : la norme NF DTU 24.1</h2>
+<p>Le Document Technique Unifié 24.1 régit l'installation des conduits de fumée. Voici ses obligations phares :</p>
+
+<h3>1. Le dépassement du faîtage</h3>
+<p>La sortie du conduit (la cheminée sur le toit) doit <strong>dépasser d'au moins 40 centimètres</strong> le faîtage du toit (le point le plus haut), ainsi que toute partie de construction distante de moins de 8 mètres. Cela garantit un bon tirage naturel sans perturbation par les vents.</p>
+
+<h3>2. La distance de sécurité (Écarts au feu)</h3>
+<p>Le conduit de fumée (même isolé) et le poêle lui-même doivent respecter des distances minimales par rapport aux matériaux combustibles (bois, placo standard, isolation non classée M0). <br>
+Pour un conduit double paroi isolé classique, la distance de sécurité est généralement de <strong>8 centimètres</strong>. Pour le poêle, la distance dépend des recommandations du fabricant (souvent entre 20 et 50 cm à l'arrière).</p>
+
+<h2>Le Label Flamme Verte</h2>
+<p>Le label « Flamme Verte » est devenu la norme d'exigence environnementale en France. En 2026, la catégorie <strong>7 étoiles</strong> (la plus stricte) garantit :</p>
+<ul>
+<li>Un rendement énergétique supérieur à 75%.</li>
+<li>Des émissions de monoxyde de carbone (CO) inférieures à 0,12%.</li>
+<li>Des émissions de particules fines très faibles (moins de 40 mg/Nm³).</li>
+</ul>
+<p><em>Attention : L'obtention de MaPrimeRénov' est généralement conditionnée à l'installation d'un appareil classé 7 étoiles (ou équivalent européen Ecodesign 2022).</em></p>
+
+<h2>Les réglementations locales et interdictions</h2>
+<p>Renseignez-vous auprès de votre mairie (PLU) ou de la préfecture ! Dans certaines zones très polluées (notamment en Île-de-France ou dans la Vallée de l'Arve), l'utilisation des <strong>foyers ouverts</strong> est strictement interdite. Par ailleurs, dans le neuf (maisons RE2020), un poêle à bois ne peut être considéré comme chauffage principal que s'il est pourvu d'un système de régulation automatique.</p>
+`
+  },
+  {
+    slug: "tendances-design-poeles-bois-2026",
+    title: "Les tendances 2026 pour le design et l'usage des poêles à bois",
+    metaTitle: "Tendances 2026 Poêles à Bois — Design & Innovations",
+    metaDescription: "Poêles suspendus, hybrides, formats panoramiques... Découvrez les grandes nouveautés et tendances design 2026 pour le chauffage au bois.",
+    excerpt: "Le poêle à bois de nos grands-parents a bien changé. Formats panoramiques, modèles suspendus, fonctionnement hybride... Tour d'horizon des tendances 2026.",
+    date: "2026-04-18",
+    readTime: "5 min",
+    category: "Tendances",
+    emoji: "✨",
+    image: "/images/blog/guide-8.jpg",
+    content: `
+<p>En 2026, le poêle à bois n'est plus seulement une source de chaleur, c'est devenu l'élément architectural central des pièces de vie. Les fabricants rivalisent d'ingéniosité pour proposer des modèles toujours plus beaux et plus performants. Quelles sont les grandes tendances ?</p>
+
+<h2>1. L'explosion du format Panoramique (16:9)</h2>
+<p>On oublie la petite lucarne carrée ! La tendance est au grand spectacle. Les foyers s'élargissent horizontalement, offrant une <strong>vision panoramique du feu</strong>, très proche de l'esthétique d'un insert de cheminée contemporain, mais avec la facilité d'installation d'un poêle. Le format 16:9 est le best-seller absolu dans les salons modernes.</p>
+
+<h2>2. Les poêles suspendus : L'ultra-design</h2>
+<p>Fixés au plafond et non posés au sol, les poêles suspendus (dont certains sont pivotants à 360°) apportent une légèreté incroyable à l'espace. Ils donnent l'impression de flotter au milieu du salon et dégagent l'emprise au sol. C'est l'atout charme par excellence, bien que techniquement plus complexes (et plus chers) à installer.</p>
+
+<h2>3. L'hybridation (Bois Bûche / Granulés)</h2>
+<p>Pourquoi choisir quand on peut avoir les deux ? Les <strong>poêles mixtes</strong> ou hybrides connaissent une forte croissance. Ils permettent :</p>
+<ul>
+<li>De brûler du granulé la journée quand vous n'êtes pas là (programmation, chaleur continue).</li>
+<li>De passer en mode bois bûche le soir et le week-end pour le plaisir de la belle flamme et le rayonnement silencieux.</li>
+</ul>
+
+<h2>4. Les matériaux bruts et texturés</h2>
+<p>Exit le noir mat basique. On observe un retour aux matériaux à forte inertie thermique mais travaillés avec esthétisme :</p>
+<ul>
+<li><strong>La pierre ollaire ou stéatite</strong> : grises et nervurées, ces pierres accumulent la chaleur pendant le feu et la restituent pendant des heures.</li>
+<li><strong>L'acier corten</strong> : pour un aspect rouillé industriel très recherché dans les lofts.</li>
+<li><strong>La faïence ou céramique colorée</strong> : un clin d'œil vintage modernisé avec des lignes épurées et des couleurs naturelles (Sable, Vert d'eau, Terracotta).</li>
+</ul>
+`
+  }
 ];

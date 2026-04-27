@@ -3,20 +3,20 @@
 
 /* === Custom Design Tokens === */
 @theme {
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a5f;
+  --color-brand-50: #fef2f2;
+  --color-brand-100: #fee2e2;
+  --color-brand-200: #fecaca;
+  --color-brand-500: #ef4444;
+  --color-brand-600: #dc2626;
+  --color-brand-700: #b91c1c;
+  --color-brand-800: #991b1b;
+  --color-brand-900: #7f1d1d;
 
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #0ea5e9;
+  --color-accent-600: #0284c7;
 
-  --color-dark: #0f172a;
+  --color-dark: #450a0a;
 }
 
 /* === Global Styles === */
@@ -25,14 +25,22 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #1e293b;
 }
 
-/* === Hero Gradient === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+}
+
+.font-mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* === Hero Background === */
 .gradient-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1d4ed8 100%);
+  background: linear-gradient(135deg, rgba(127, 29, 29, 0.9) 0%, rgba(185, 28, 28, 0.8) 50%, rgba(220, 38, 38, 0.9) 100%), url('/images/hero.jpg') center/cover no-repeat;
 }
 
 /* === ViteUnDevis Widget Overrides === */
@@ -47,7 +55,7 @@ body {
   display: block;
   width: 100%;
   min-height: 400px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .vud-widget * {
